@@ -1,5 +1,8 @@
 function addItem() {
     let newItem = document.createElement('li');
-    newItem.textContent = document.getElementById('newItemText').value;
+    let text = document.getElementById('newItemText').value;
+    newItem.append(document.createTextNode(text));
+    text.value = '';
+    
     document.getElementById('items').appendChild(newItem);
 }
