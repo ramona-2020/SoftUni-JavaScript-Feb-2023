@@ -69,22 +69,25 @@ function solve() {
     let factor = 0;
     for (const tr of trNodes) {
         let trChildren = tr.children;
-        for (let index = 0; index < trChildren; index++) {
+        for (let index = 0; index < trChildren.length; index++) {
             if (index == 1) {
-              let furniture = children[index].textContent;
+              let furniture = trChildren[index].textContent;
               furnitureNames.push(furniture);
             } else if (index == 2) {
-              let price = Number(children[index].textContent);
+              let price = Number(trChildren[index].textContent);
               totalPrice += price;
             } else if (index == 3) {
-              let tdFactor = Number(children[index].textContent);
+              let tdFactor = Number(trChildren[index].textContent);
               factor += tdFactor;
             }
         }
     }
 
     let result = `Bought furniture: ${furnitureNames.join(', ')}`;
-    let total = `Total price: ${totalPrice}`;
+    let total = `Total price: ${totalPrice.toFixed(2)}`;
+
+    let trCounts = document.querySelectorAll('table tbody tr').length - 1;
+    factor /= trCounts;
     let decFactor = `Average decoration factor: ${factor}`;
 
     let textarea = document.getElementsByTagName('textarea')[1];
