@@ -1,103 +1,116 @@
-function onLoad() {
+/*
+  Constants:
+*/
+const BASE_URL = 'http://localhost:3030/jsonstore/collections/books' 
+const loadBooksBtn = document.getElementById('loadBooks');
+const submitBtn = document.querySelector('#form button');
+const tableTbody = document.querySelector('table tbody');
 
-  function createTableRow(bookDataList) {
-    for (const bookData of bookDataList) {
-      let tr = document.createElement('tr');
-      let titleTd = document.createElement('td');
-      let authorTd = document.createElement('td');
-      let tdActions = document.createElement('td');
-      let btnEdit = document.createElement('button');
-      let btnDelete = document.createElement('button');
-      btnEdit.textContent = 'Edit';
-      btnEdit.id = bookData.id;
-      btnDelete.textContent = 'Delete';
-      btnDelete.id = bookData.id;
-      tdActions.appendChild(btnEdit);
-      tdActions.appendChild(btnDelete);
-
-      titleTd.textContent = bookData.title;
-      authorTd.textContent = bookData.author;
-
-      let tbody = document.querySelectorAll('table tbody')[0];
-      tr.appendChild(titleTd);
-      tr.appendChild(authorTd);
-      tr.appendChild(tdActions);
-      tbody.appendChild(tr);
-    }
+// Helper functions:
+function createElement(tagName, value, parentNode) {
+  let newElement = document.createElement(tagName);
+  newElement.textContent = value;
+  if (parentNode) {
+    parentNode.appendChild(newElement);
   }
+  return newElement;
+}
 
-  function updateBookFunction(bookID) {
-    let updateBook = async () => {
-      let url = `http://localhost:3030/jsonstore/collections/books/${bookID}`
-      let bookBody = {
-        "author": "Changed Author",
-        "title": "Changed Title"
-      }
-      let response = await fetch(url, {
-        method: 'PUT',
-        body: JSON.stringify(bookBody),
-      });
-      let data = await response.json();
-      return data;
-    }
-
-    updateBook()
-      .then((data) => {
-        console.log(data);
-      })
-  }
-
-  function loadBooksFunction() {
-    // remove old table data:
-    let tableRows = document.querySelectorAll('table tbody tr');
-    for (let i=0; i<tableRows.length; i++) {
-        let tableRow = tableRows[i];
-        tableRow.remove();
-    }
-
-    const asyncFunc = async () => {
-      const resourceAllBooks = `http://localhost:3030/jsonstore/collections/books`;
-      const response = await fetch(resourceAllBooks, {
-        method: 'GET',
-      });
-      const data = await response.json();
-      return data;
-    }
-
-    asyncFunc().then((data) => {
-      let bookDataList = [];
-      for (let key in data) {
-        let author = data[key].author;
-        let title = data[key].title;
-
-        bookData = {
-          'id': key,
-          'title': title,
-          'author': author,
-        }
-        bookDataList.push(bookData);
-      }
-      createTableRow(bookDataList);
-
-      let editBookButtons = document.querySelectorAll('tbody tr td:last-child button:first-child');
-      if (editBookButtons.length > 2) {
-        for (let button of editBookButtons) {
-          button.addEventListener('click', () => {
-            let bookID = button.id;
-            updateBookFunction(bookID);
-          })
-        }
-      }
-
-    })
-  }
-
-
-  let loadBooksBtn = document.getElementById('loadBooks');
+/*
+  Events:
+  - load all books
+  - create book
+*/
+function attachEvents() {
   loadBooksBtn.addEventListener('click', loadBooksFunction);
-
-
+  submitBtn.addEventListener('click', createBookHandler);
 
 }
 
-window.onload = onLoad();
+function loadBooksFunction(e) {
+  tableTbody.innerHTML = '';
+
+  fetch(BASE_URL)
+    .then((response) => response.json())
+    .then((list) => {
+
+      for (const key in list) {
+        let object = list[key];
+        let author = object.author;
+        let title = object.title;
+
+        let tableTr = createElement('tr', '', tableTbody);
+        let tdAuthor = createElement('td', author, tableTr);
+        let tdTitle = createElement('td', title, tableTr);
+        let tdActions = createElement('td', '', tableTr);
+        let btnEdit = createElement('button', 'Edit', tdActions);
+        btnEdit.id = key;
+        btnEdit.addEventListener('click', editBookHandler);
+        let btnDelete = createElement('button', 'Delete', tdActions);
+        btnDelete.id = key;
+        btnDelete.addEventListener('click', deleteBookHandler);
+
+        tableTbody.appendChild(tableTr);
+      }
+
+    })
+}
+
+function editBookHandler(e) {
+  let bookId = e.target.id;
+  let newTitleValue = document.querySelector('input[name="title"]').value;
+  let newAuthorValue = document.querySelector('input[name="author"]').value;
+
+  if (newAuthorValue && newTitleValue) {
+    let jsonBody = JSON.stringify({
+      author: newTitleValue,
+      title: newAuthorValue
+    })
+  
+    fetch(BASE_URL + `/${bookId}`, {
+      method: 'PUT',
+      body: jsonBody,
+    })
+    .then(() => {
+      loadBooksFunction(e);
+    })
+  } else {
+    alert(`Please enter author and title!`);
+  }
+
+}
+
+function createBookHandler(e) {
+  let newTitleValue = document.querySelector('input[name="title"]').value;
+  let newAuthorValue = document.querySelector('input[name="author"]').value;
+
+  if (newAuthorValue && newTitleValue) {
+    let jsonBody = JSON.stringify({
+      author: newTitleValue,
+      title: newAuthorValue,
+      id: `1_${newAuthorValue}`
+    })
+  
+    fetch(BASE_URL, {
+      method: 'POST',
+      body: jsonBody
+    })
+    .then(() => {
+      loadBooksFunction(e);
+    })
+  } else {
+    alert(`Please enter author and title!`);
+  }
+}
+
+function deleteBookHandler(e) {
+  let bookId = e.target.id;
+  fetch(BASE_URL + `/${bookId}`, {
+    method: 'DELETE',
+  })
+  .then(() => {
+    loadBooksFunction();
+  })
+}
+
+attachEvents();
