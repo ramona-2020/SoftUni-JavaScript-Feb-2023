@@ -74,10 +74,7 @@ function editBookHandler(e) {
     .then(() => {
       loadBooksFunction(e);
     })
-  } else {
-    alert(`Please enter author and title!`);
   }
-
 }
 
 function createBookHandler(e) {
@@ -98,8 +95,6 @@ function createBookHandler(e) {
     .then(() => {
       loadBooksFunction(e);
     })
-  } else {
-    alert(`Please enter author and title!`);
   }
 }
 
