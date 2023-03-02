@@ -19,7 +19,7 @@ function loadTasksHandler(e) {
         e.preventDefault();
     }
 
-    ulList.innerHTML = '';
+
     const tasks = async () => {
         const response = await fetch(BASE_URL, {
             method: 'GET',
@@ -46,22 +46,21 @@ function loadTasksHandler(e) {
         })
 }
 
-function createTaskHandler() {
-    let taskName = document.getElementById('title').value;
-    if (typeof taskName !== 'string' || taskName.length < 2) {
-        return;
-    }
-    if (!taskName) {
-        alert('Please enter task name!')
-    }
+function createTaskHandler(e) {
+    e.preventDefault();
 
+    let taskName = document.getElementById('title').value;
     fetch(BASE_URL, {
         method: 'POST',
         body: JSON.stringify({
              'name': taskName,
         }),
     })
-        .then(() => loadTasksHandler())
+    .then(() => {
+        ulList.innerHTML = '';
+        loadTasksHandler();
+    })
+
 }
 
 function removeTaskHandler(e) {
@@ -74,7 +73,10 @@ function removeTaskHandler(e) {
     }
 
     task()
-    .then(() => loadTasksHandler())
+    .then(() => {
+        ulList.innerHTML = '';
+        loadTasksHandler()
+    })
 }
 
 function editTaskHandler(e) {
@@ -102,10 +104,6 @@ function editTaskHandler(e) {
     editBtn.addEventListener('click', () => {
         // Change task name
         let newTaskName = input.value;
-        if (typeof newTaskName !== 'string' || newTaskName.length < 3) {
-            return;
-        }
-
         const taskID = input.id;
         fetch(BASE_URL + `/${taskID}`, {
                 method: 'PATCH',
