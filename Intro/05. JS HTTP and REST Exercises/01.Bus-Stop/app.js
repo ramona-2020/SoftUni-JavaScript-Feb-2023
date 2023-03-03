@@ -1,39 +1,31 @@
-function getInfo() {
-    let stopId = Number(document.getElementById('stopId').value);
+async function getInfo() {
+    const stopId = document.getElementById('stopId').value;
+    const busesUL = document.getElementById('buses');
     let stopName = document.getElementById('stopName');
-    let busesUL = document.getElementById('buses');
 
-    const asyncFunc = async () => {
-        const resource = `http://localhost:3030/jsonstore/bus/businfo/${stopId}`
-        const response = await fetch(resource);
+    // Clear the result list:
+    busesUL.innerHTML = '';
 
-        if (response.status === 200) {
-            const data = await response.json();
-            return data;
+    try {
+        const response = await fetch(`http://localhost:3030/jsonstore/bus/businfo/${stopId}`);
+
+        if (!response.status) {
+            let error = new Error();
+            error.status = response.status;
+            console.statusText = response.statusText;
+            throw error;
         }
 
+        const data = await response.json();
+        stopName.textContent = data.name;
+
+        Object.entries(data.buses).forEach(([busId, busTime]) => {
+            let listItem = document.createElement('li');
+            listItem.textContent = `"Bus ${busId} arrives in ${busTime} minutes"`;
+            busesUL.appendChild(listItem);
+        });
+
+    } catch (error) {
+        stopName.textContent = 'Error!';
     }
-    
-    asyncFunc().then(data => {
-        console.log(data);
-
-        stopName.textContent = '';
-        busesUL.innerHTML = '';
-
-        if (data !== undefined) {
-            stopName.textContent = data.name;
-    
-            let buses = data.buses;
-            for (let busId in buses) {
-                busId = Number(busId);
-                let time = buses[busId];
-                let li = document.createElement('li');
-                li.textContent = `Bus ${busId} arrives in ${time} minutes`;
-                busesUL.appendChild(li);
-            }
-        } else {
-            stopName.textContent = 'Error';
-        }
-
-    });
 }
