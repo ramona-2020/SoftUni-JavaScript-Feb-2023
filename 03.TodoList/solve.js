@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3030/jsonstore/tasks/'
+const BASE_URL = 'http://localhost:3030/jsonstore/tasks/';
 const ulList = document.getElementById('todo-list');
 const loadTasksBtn = document.getElementById('load-button');
 const addTaskBtn = document.getElementById('add-button');
@@ -9,41 +9,57 @@ function createElement(node, value, parentNode) {
     parentNode.appendChild(newElement);
     return newElement;
 }
+
+function renderTasks(data) {
+    Object.entries(data).forEach(([key, obj])=> {
+        let listItem = createElement('li', '', ulList);
+        let span = createElement('span', '', listItem);
+        let btnRemove = createElement('button', 'Remove', listItem);
+        btnRemove.classList.add('btnRemove');
+        let btnEdit = createElement('button', 'Edit', listItem);
+        btnEdit.classList.add('btnEdit');
+
+        for (const prop in obj) {
+            if (prop === 'name') {
+                span.textContent = obj[prop];
+            } else {
+                btnRemove.id = obj[prop];
+                btnEdit.id = obj[prop];
+
+                // Remove
+                btnRemove.addEventListener('click', removeTaskHandler);
+
+                // Edit
+                btnEdit.addEventListener('click', editTaskHandler);
+            }
+        }
+    })
+}
+
 function attachEvents() {
   loadTasksBtn.addEventListener('click', loadTasksHandler);
   addTaskBtn.addEventListener('click', createTaskHandler);
 }
 
-function loadTasksHandler(e) {
+async function loadTasksHandler(e) {
     if (e) {
         e.preventDefault();
     }
-
-
-    const tasks = async () => {
-        const response = await fetch(BASE_URL, {
-            method: 'GET',
-        })
-        return await response.json()
+    ulList.innerHTML = '';
+    const response = await fetch(BASE_URL);
+    if (!response.ok) {
+        let error = new Error();
+        error.code = response.code;
+        error.statusCode = response.statusCode;
+        throw error;
     }
 
-    tasks()
-        .then((data) => {
-            for (const key in data) {
-                let task = data[key];
-                let taskId = task._id;
-                let taskName = task.name;
-                let listItem = createElement('li', '', ulList);
-                createElement('span', taskName,  listItem);
-
-                let removeBtn = createElement('button', 'Remove', listItem);
-                removeBtn.id = taskId;
-                removeBtn.addEventListener('click', removeTaskHandler)
-                let editBtn = createElement('button', 'Edit', listItem);
-                editBtn.id = taskId;
-                editBtn.addEventListener('click', editTaskHandler);
-            }
-        })
+    try {
+        const data = await response.json();
+        renderTasks(data);
+    }catch (error) {
+        // Not process error...
+    }
 }
 
 function createTaskHandler(e) {
@@ -63,56 +79,52 @@ function createTaskHandler(e) {
 
 }
 
-function removeTaskHandler(e) {
+async function removeTaskHandler(e) {
     const taskID = e.target.id;
-
-    const task = async () => {
-        return await fetch(BASE_URL + `/${taskID}`, {
-            method: 'DELETE',
-        })
-    }
-
-    task()
-    .then(() => {
-        ulList.innerHTML = '';
-        loadTasksHandler()
-    })
+    await fetch(`http://localhost:3030/jsonstore/tasks/${taskID}`, {
+        method: 'DELETE',
+    });
+    await loadTasksHandler();
 }
 
-function editTaskHandler(e) {
+async function editTaskHandler(e) {
     if (e) {
         e.preventDefault();
     }
     let editBtn = e.target;
     let listItem = e.target.parentNode;
-    let listItemSpan = listItem.children[0];
+    let removeBtn = e.target.parentNode.children[1];
+    listItem.classList.add('active');
+
+    let span = listItem.children[0];
 
     // Change edit button to Submit button
     editBtn.textContent = 'Submit';
 
-    // Remove span
-    listItemSpan.remove();
+    let input = document.createElement('input');
+    input.setAttribute('value', span.textContent);
 
-    // Create input field
-    let input = document.createElement("input");
-    input.setAttribute('type', 'text');
-    input.setAttribute('value', listItemSpan.textContent);
-    input.setAttribute('id', editBtn.id)
+    // remove span and buttons
+    span.remove();
+    removeBtn.remove();
+    editBtn.remove();
 
-    listItem.prepend(input);
+    // add input and buttons
+    listItem.appendChild(input);
+    listItem.appendChild(removeBtn);
+    listItem.appendChild(editBtn);
 
-    editBtn.addEventListener('click', () => {
-        // Change task name
-        let newTaskName = input.value;
-        const taskID = input.id;
-        fetch(BASE_URL + `/${taskID}`, {
-                method: 'PATCH',
-                body: JSON.stringify({
-                    name: newTaskName
-                })
-        })
-        .then(() => loadTasksHandler())
-    })
+    async function editTask() {
+        const taskId = e.target.id;
+        await fetch(`http://localhost:3030/jsonstore/tasks/${taskId}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                name: input.value,
+            })
+        });
+        await loadTasksHandler();
+    }
+    editBtn.addEventListener("click", editTask);
 }
 
 attachEvents();
