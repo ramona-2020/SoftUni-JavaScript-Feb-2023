@@ -7,14 +7,7 @@ class OnlineShop {
         this.sales = [];
     }
     productInWarehouse(product) {
-        let productObjects = this.products;
-        for (const productObject of productObjects) {
-            if (productObject.product === product) {
-                return productObject;
-            }
-        }
-
-        return false;
+        return this.products.find((p) => p.product === product);
     }
     loadingStore(product, quantity, spaceRequired) {
         if (this.warehouseSpace < spaceRequired) {
@@ -31,10 +24,10 @@ class OnlineShop {
         if (!productFound) {
             throw new Error(`There is no ${product} in the warehouse.`);
         }
-        else if (minimalQuantity < 0 || minimalQuantity === 0) {
+        else if (minimalQuantity <= 0) {
             throw new Error(`The quantity cannot be zero or negative.`);
         }
-        else if (minimalQuantity < productFound.quantity || minimalQuantity === productFound.quantity) {
+        else if (minimalQuantity <= productFound.quantity) {
             return `You have enough from product ${product}.`;
         } else {
             const difference = minimalQuantity - productFound.quantity;
@@ -49,9 +42,10 @@ class OnlineShop {
         }
         // decrement by 1 the product quantity from the product in the products array
         productFound.quantity -= 1;
+        let quantity = productFound.quantity;
         this.sales.push({
             product,
-            quantity: 1,
+            quantity,
         })
         return `The ${product} has been successfully sold.`
     }
@@ -60,19 +54,15 @@ class OnlineShop {
             throw new Error('There are no sales today!');
         }
         const sales = this.sales.length;
-        let result = `You sold ${sales} products today!\n`;
-        result += 'Products in the warehouse: \n';
-        for (const product of this.products) {
-            const name = product.product;
-            const quantity = product.quantity;
-
-            result += `${name}-${quantity} more left\n`;
-        }
-        return result.trim();
+        let result = [`You sold ${sales} products today!`, 'Products in the warehouse:'];
+        this.products.forEach((p) => {
+            result.push(`${p.product} - ${p.quantity} more left`);
+        })
+        return result.join('\n');
     }
 }
 
-// test:
+//
 const myOnlineShop = new OnlineShop(500)
 console.log(myOnlineShop.loadingStore('headphones', 10, 200));
 console.log(myOnlineShop.loadingStore('laptop', 5, 200));

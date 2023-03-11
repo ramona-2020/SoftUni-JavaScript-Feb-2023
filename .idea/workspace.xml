@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e05ffc33-4cf9-416a-8ab2-d2f5eb2a23e0" name="Changes" comment="" />
+    <list default="true" id="e05ffc33-4cf9-416a-8ab2-d2f5eb2a23e0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intro/JS Objects and Classes/02.Online_Shop_Class_task.js" beforeDir="false" afterPath="$PROJECT_DIR$/Intro/JS Objects and Classes/02.Online_Shop_Class_task.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -107,7 +110,8 @@
       <workItem from="1678044437529" duration="1837000" />
       <workItem from="1678469260194" duration="9229000" />
       <workItem from="1678482330751" duration="243000" />
-      <workItem from="1678526010008" duration="5532000" />
+      <workItem from="1678526010008" duration="5575000" />
+      <workItem from="1678536467346" duration="2197000" />
     </task>
     <task id="LOCAL-00001" summary="CRUD TODO Tasks">
       <created>1677784678529</created>
@@ -193,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678482488577</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="JS Object and classes">
+      <created>1678534608346</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1678534608347</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +216,8 @@
     <MESSAGE value="JS Tasks" />
     <MESSAGE value="03.Glocery List (CRUD)" />
     <MESSAGE value="JS Exam Preparation 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="JS Exam Preparation 2" />
+    <MESSAGE value="JS Object and classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS Object and classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
