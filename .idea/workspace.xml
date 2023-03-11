@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e05ffc33-4cf9-416a-8ab2-d2f5eb2a23e0" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2MQRDIFhp1CiQxY8Jl1fbnQRMjS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;19.7.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.15.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ramona/PycharmProjects/SoftUni-JavaScript-Feb-2023/Intro/JS Exam_Preparation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/snap/pycharm-professional/319/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Intro/JS Exam_Preparation" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Intro/05. JS HTTP and REST Exercises/01.Bus-Stop" />
+      <recent name="$PROJECT_DIR$/TODO_list_crud" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/SimpleExpressApp" />
+      <recent name="$PROJECT_DIR$/SimpleExpressApp/public" />
+      <recent name="$PROJECT_DIR$/03. Todo List" />
+      <recent name="$PROJECT_DIR$/TODO_list_crud" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.02.Online_Shop_Class_task.js">
+    <configuration name="02.Online_Shop_Class_task.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Intro/JS Objects and Classes/02.Online_Shop_Class_task.js" working-dir="$PROJECT_DIR$/Intro/JS Objects and Classes">
+      <method v="2" />
+    </configuration>
+    <configuration name="Node.js" type="NodeJSConfigurationType" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="shopping_list.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Intro/JS Exam_Preparation/01. Shopping List/shopping_list.js" working-dir="$PROJECT_DIR$/Intro/JS Exam_Preparation/01. Shopping List">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.02.Online_Shop_Class_task.js" />
+        <item itemvalue="Node.js.shopping_list.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e05ffc33-4cf9-416a-8ab2-d2f5eb2a23e0" name="Changes" comment="" />
+      <created>1677697699252</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677697699252</updated>
+      <workItem from="1677697700965" duration="3334000" />
+      <workItem from="1677772600244" duration="8239000" />
+      <workItem from="1677784621266" duration="1299000" />
+      <workItem from="1677785934862" duration="5757000" />
+      <workItem from="1677842209046" duration="17158000" />
+      <workItem from="1677868897445" duration="6862000" />
+      <workItem from="1677935815788" duration="4634000" />
+      <workItem from="1677940510438" duration="234000" />
+      <workItem from="1677957928876" duration="374000" />
+      <workItem from="1677961530427" duration="1378000" />
+      <workItem from="1678035726785" duration="3536000" />
+      <workItem from="1678044437529" duration="1837000" />
+      <workItem from="1678469260194" duration="9229000" />
+      <workItem from="1678482330751" duration="243000" />
+      <workItem from="1678526010008" duration="5532000" />
+    </task>
+    <task id="LOCAL-00001" summary="CRUD TODO Tasks">
+      <created>1677784678529</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677784678530</updated>
+    </task>
+    <task id="LOCAL-00002" summary="JS Tasks">
+      <created>1677789453712</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677789453712</updated>
+    </task>
+    <task id="LOCAL-00003" summary="JS Tasks">
+      <created>1677791220630</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677791220630</updated>
+    </task>
+    <task id="LOCAL-00004" summary="JS Tasks">
+      <created>1677791946166</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677791946166</updated>
+    </task>
+    <task id="LOCAL-00005" summary="JS Tasks">
+      <created>1677857651172</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677857651172</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixes and all tests passes">
+      <created>1677864952573</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1677864952573</updated>
+    </task>
+    <task id="LOCAL-00007" summary="JS Tasks">
+      <created>1677939804813</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1677939804813</updated>
+    </task>
+    <task id="LOCAL-00008" summary="03.Glocery List (CRUD)">
+      <created>1677939851556</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1677939851556</updated>
+    </task>
+    <task id="LOCAL-00009" summary="03.Glocery List (CRUD)">
+      <created>1677940180361</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1677940180361</updated>
+    </task>
+    <task id="LOCAL-00010" summary="03.Glocery List (CRUD)">
+      <created>1677940430750</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1677940430750</updated>
+    </task>
+    <task id="LOCAL-00011" summary="JS Exam Preparation 2">
+      <created>1678481996291</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678481996291</updated>
+    </task>
+    <task id="LOCAL-00012" summary="JS Exam Preparation 2">
+      <created>1678482488577</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1678482488577</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="CRUD TODO Tasks" />
+    <MESSAGE value="Fixes and all tests passes" />
+    <MESSAGE value="JS Tasks" />
+    <MESSAGE value="03.Glocery List (CRUD)" />
+    <MESSAGE value="JS Exam Preparation 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS Exam Preparation 2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="javascript-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
